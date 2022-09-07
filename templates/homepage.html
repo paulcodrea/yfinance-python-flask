@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta name="description" content="A demo site featuring an ajax-based stock widget that uses Python and Flask as a backend microservice API"> -->
+
+    <title>Enterprise Dashboard</title>
+
+  </head>
+
+  <body class="text-center">
+      <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+          <!-- <header class="masthead mb-auto"> -->
+            <!-- <div class="inner"> -->
+              <!-- <h3 class="masthead-brand">Financial Information</h3> -->
+              <!-- <nav class="nav nav-masthead justify-content-center"> -->
+                <!-- <a class="nav-link active" href="#">Home</a> -->
+                <!-- <nav> -->
+            <!-- </div> -->
+          <!-- </header> -->
+          <div id="widgetContent">
+            <main role="main" class="inner">
+              <h1 class="cover-heading">Financial Widget</h1>
+              <!-- <p class="lead">A Python and Flask based Stock Quote Module</p> -->
+
+              <div class="input-group mb-3">
+                <p class="lead">Enter Stock ETF or Mutual Fund Symbol</p>
+                <input id="symbol" type="text" class="form-control" placeholder="Enter Stock ETF or Mutual Fund Symbol" aria-label="Stock, ETF or Mutual Fund" aria-describedby="basic-addon2">
+                
+                <p class="lead">Choose Period. Valid periods: 1d,5d,1mo,3mo,6mo,1y,2y,5y,10y,ytd,max.
+                    <br>Default value: 6mo.
+                </p>
+                <input id="period" type="text" class="form-control" placeholder="Enter timeframe (e.g. 1y, 2y, 1mo)" aria-label="Stock Period" aria-describedby="basic-addon2">
+                
+                <p class="lead">Choose Interval. Valid intervals: 1m,2m,5m,15m,30m,60m,90m,1h,1d,5d,1wk,1mo,3mo.
+                    <br>Default value: 1d.
+                </p>
+                <input id="interval" type="text" class="form-control" placeholder="Enter stock price interval (e.g. 1m, 5m, 30m, 1h, 1mo)" aria-label="Stock, ETF or Mutual Fund" aria-describedby="basic-addon2">
+
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" onclick="site.SubmitForm();">Search</button>
+                </div>
+
+              </div>
+              <div id="chart_container"></div>
+            </main>
+          </div>
+
+          <div class="show_checkbox">
+            <input type="checkbox" id="event_1" name="event_1" value="box" onclick="site.SubmitEvent();">
+            <label for="event_1">Delta variant (COVID-19).</label>
+            <input type="checkbox" id="event_2" name="event_2" value="box" onclick="site.SubmitEvent();">
+            <label for="event_2">Russia starts war on Ukraine.</label>
+          </div>
+        </div>
+    
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		<script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
+    <script src="{{ url_for('static',    filename='scripts/site.js') }}"></script>
+    
+  
+
+  </body>
+</html>
